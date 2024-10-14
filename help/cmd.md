@@ -86,3 +86,9 @@ git diff num1 num2
 ```sh
 git restore
 ```
+
+* *Запуск скрипта из терминала вин(не из консоли pycharm):*
+
+```sh
+python file_name
+```
