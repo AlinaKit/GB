@@ -1,0 +1,36 @@
+[{
+  "id": 1,
+  "name": "Name Family",
+  "username": "Mariantuanette",
+  "company": {
+    "name": "Planetra",
+    "address": {
+      "country": "RF",
+      "town": "Moscow",
+      "street": "Dnepropetrovskaya",
+      "house": 2,
+      "office": 545
+    },
+    "email": "planetra@yandex.ru"
+  },
+  "bday": "19.12.2000",
+  "wday": "27.11.2023"
+},
+{
+  "id": 1,
+  "name": "Name Family",
+  "username": "Mariantuanette",
+  "company": {
+    "name": "Planetra",
+    "address": {
+      "country": "RF",
+      "town": "Moscow",
+      "street": "Dnepropetrovskaya",
+      "house": 2,
+      "office": 545
+    },
+    "email": "planetra@yandex.ru"
+  },
+  "bday": "19.12.2000",
+  "wday": "27.11.2023"
+}]
