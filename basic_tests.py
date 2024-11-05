@@ -38,3 +38,4 @@ num = 'python'
 nn = 3
 mm = 2
 print(str(num)[0 - int(nn):] * int(mm))
+

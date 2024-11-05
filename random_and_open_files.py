@@ -68,3 +68,4 @@ with open('text.txt', 'a', encoding='utf-8', errors='replace') as txt:
         print(line, end='\n ?!?', file=txt)
 with open('text.txt') as txt:
     print(list(txt), chr(10060) * 4)
+

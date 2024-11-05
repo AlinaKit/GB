@@ -235,3 +235,4 @@ test_ascii = test.encode('ascii')
 print(f'{test = }, {type(test) = }')
 print(f'{test_utf = }, {type(test_utf) = }')
 print(f'{test_ascii = }, {type(test_ascii) = }')
+

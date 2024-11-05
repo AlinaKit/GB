@@ -69,8 +69,3 @@ def csv_to_json(from_csv, to_json, timed_csv, code_code):
                 # print(all_data)
             # hey = json.dumps(tim_dict, indent=4, separators=(', ', ': '))
             # json.dump(hey, writed)
-
-csv_to_json('workstep_list.csv', 'workstep_list.json', 'timed_workstep_list.csv', 'utf-8')
-csv_to_json('order_list_cd.csv', 'order_list_cd.json', 'timed_order_list_cd.csv',  'utf-8')
-csv_to_json('machines_list.csv', 'machines_list.json', 'timed_machines_list.csv',  'cp1251')
-csv_to_json('calendar_list.csv', 'calendar_list.json', 'timed_calendar_list.csv',  'utf-8')
