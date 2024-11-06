@@ -11,7 +11,10 @@ class Player:
                 return i
 
     def __init__(self, clas = 'UNKNOW'):  # появляется в экземплярах класса, но отсутствует в самом классе (выдаст ошибку при вызове)
-        self.name = self.obj_name()
+        for i, j in globals().items():
+            if j is self:
+                namme = i
+        self.name = namme
         self.clas = clas
         self.health = 100
 
@@ -48,4 +51,4 @@ print(player_1.__dict__, player_2.__dict__, bottle_1.__dict__, bottle_2.__dict__
 player_1.heal(20)
 print(player_1.__dict__, bottle_1.__dict__, player_2.__dict__, bottle_2.__dict__)
 
-print(ord('}'))
+player_1.lvl_up()
