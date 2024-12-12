@@ -5,6 +5,7 @@ from random import choice, choices
 class RenameInt(int):
     '''многострочная
     строка документации'''
+
     def __new__(cls, value, name):
       instance = super().__new__(cls, value)
       instance.name = name
@@ -37,17 +38,66 @@ class Singleton:
         return f'Singleton({self._instance}, {self.name})'
 
 class NoClassic:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
 
-    def __repr__(self):
-        return f'Vector({self.x}, {self.y})'
+    # __slots__ = ('_x', '_y')
+
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    def __repr__(self):  # repr(a) == f'{a = }' == collections (?)
+        return f'Vector({self._x}, {self._y})'
 
     def __add__(self, other):  # radd ищется если нет add, у него селф - символ справа от знака
-        x = self.x + other.x
-        y = self.y + other.y
+        x = self._x + other._x
+        y = self._y + other._y
         return NoClassic(x, y)
+
+    def __iadd__(self, other):
+        x = self._x + other._x
+        y = self._y + other._y
+        return NoClassic(x, y)
+
+    # def
+
+    def __eq__(self, other):
+        return (self._x == other._x and self._y == other._y) or (sorted((self._x, self._y)) == sorted((other._x, other._y)))
+
+    # def __ne__(self, other):
+    #     return not (self.x == other.x and self.y == other.y)
+
+    def __gt__(self, other):
+        return (self._x ** 2 + self._y ** 2) > (other._x ** 2 + other._y ** 2)
+
+    # def __ge__(self, other):
+    #     return (self.x ** 2 + self.y ** 2) <= (other.x ** 2 + other.y ** 2)
+
+    def __lt__(self, other):
+        return (self._x ** 2 + self._y ** 2) < (other._x ** 2 + other._y ** 2)
+
+    # def __le__(self, other):
+    #     return (self.x ** 2 + self.y ** 2) >= (other.x ** 2 + other.y ** 2)
+
+    def __hash__(self):
+        return hash((self._x, self._y))
+
+    # def __getattribute__(self, item):  # по умолчанию
+    #     return object.__getattribute__(self, item)
+
+    def __setattr__(self, key, value):  # установка хначения атрибута, в случае несуществования стаботает иф
+        if key not in ('_x', '_y'):
+            raise AttributeError('Неверный атрибут')
+        return object.__setattr__(self, key, value)
+
+    def __getattr__(self, item):  # вместо проверки на ошибку в __getattribute__, срабатывает только при ошибке __getattribute__
+        print('Неверный атрибут!')
+        return None
+
+    # def __delattr__(self, item):
+    #     if item in ('_x', '_y'):
+    #         setattr(self, item, 0)
+    #     else:
+    #         object.__delattr__(self, item)
 
 class Closet:
     CLOTHES=('one', 'two', 'three')
@@ -60,7 +110,7 @@ class Closet:
         else:
             self.storeroom = storeroom
 
-    def __str__(self):
+    def __str__(self):  # a == f'a'
         names = ', '.join(self.storeroom)
         return f'In closet {names}, {self.count}'
 
@@ -87,7 +137,7 @@ c = Singleton('Name')
 print(f'{c.name = }')
 d = Singleton('Noname')
 print(f'{c.name = }, {d.name = }')
-print(c, repr(c))
+print(c, '\n', repr(c))
 print('a =',sys.getrefcount(a) - 1, '\nb =', sys.getrefcount(b) - 1)
 b = a
 cd = a
@@ -95,15 +145,25 @@ print('a =', sys.getrefcount(a) - 1, '\nb =', sys.getrefcount(b) - 1)
 del a
 print('del a')
 print('b =', sys.getrefcount(b) - 1)
-print('close session')
 av = NoClassic(1, 1)
 bv = NoClassic(2, 2)
 cv = av + bv
 print(f'{av = }\n{bv = }\n{cv = }')
+dv = av
+print(f'{av = }\n{dv = }')
+print(f'{av == dv}')
+dv += bv
+print(f'{dv = }')
+print(f'{cv == dv}\n{av == dv}')
 cl1 = Closet(10)
 for _ in range(3):
     cl1 = cl1 >> 4
     print(cl1)
 text = 'one two three'
 s = MultiStr('!!!')
-print(text * s)
+print(text * s)  # не наоборот, text * MultiStr выдаст ошибку!
+
+
+
+
+print('close session')

@@ -11,9 +11,10 @@ class Player:
                 return i
 
     def __init__(self, clas = 'UNKNOW'):  # появляется в экземплярах класса, но отсутствует в самом классе (выдаст ошибку при вызове)
-        for i, j in globals().items():
-            if j is self:
-                namme = i
+        namme = self.obj_name()
+        # for i, j in globals().items():
+        #     if j is self:
+        #         namme = str(i)
         self.name = namme
         self.clas = clas
         self.health = 100
@@ -26,10 +27,20 @@ class Player:
         print(self.name, ': LEVEL UP!!!')
 
     def heal(self, quantity):
+        try:
+            quantity = int(quantity) and quantity > 0
+        except:
+            print('неверно, попробуйте другое целое положительное число')
+            quantity = 0
         self.health += quantity
         self.bottle_cup.now_v -= quantity
 
     def vamp_attack(self, other, quantity):
+        try:
+            quantity = int(quantity) and quantity > 0
+        except:
+            print('неверно, попробуйте другое целое положительное число')
+            quantity = 0
         self.health += quantity * 0.5
         other.health -= quantity
 

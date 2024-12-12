@@ -236,3 +236,64 @@ print(f'{test = }, {type(test) = }')
 print(f'{test_utf = }, {type(test_utf) = }')
 print(f'{test_ascii = }, {type(test_ascii) = }')
 
+'логика массивов'
+a = {'keyone': 'one', 'keytwo': 2, 'keythree': 'one'}
+b = {'keyone': 1, 'keythree': 'one', 'keyfour': 2}
+print(f'{a = }, {b = }')
+# print(f'{a & b = }')
+print(f'{a | b = }')
+# print(f'{a + b = }')
+# print(f'{a - b = }')
+print(f'{a = }, {b = }')
+a = b
+b.update(dict(newkey='new'))
+print(f'{a = }, {b = }\n')
+
+a = {1, 2, 3}
+b = {2, 3, 4, 5}
+print(f'{a = }, {b = }')
+print(f'{a & b = }')
+print(f'{a | b = }')
+# print(f'{a + b = }')
+print(f'{a - b = }')
+print(f'{b - a = }')
+print(f'{a = }, {b = }')
+a = b
+b.add('new')
+print(f'{a = }, {b = }\n')
+
+a = [1, 2, 3]
+b = [2, 3, 4, 5]
+print(f'{a = }, {b = }')
+# print(f'{a & b = }')
+# print(f'{a | b = }')
+print(f'{a + b = }')
+# print(f'{a - b = }')
+print(f'{a = }, {b = }')
+a = b
+b.append('new')
+print(f'{a = }, {b = }\n')
+
+a = (1, 2, 3)
+b = (2, 3, 4, 5)
+print(f'{a = }, {b = }')
+# print(f'{a & b = }')
+# print(f'{a | b = }')
+print(f'{a + b = }')
+# print(f'{a - b = }')
+print(f'{a = }, {b = }')
+c = b
+b = b + a
+print(f'{c = }, {b = }\n')
+
+a = ((1, 2, 3))
+b = ((2, 3, 4, 5))
+print(f'{a = }, {b = }')
+# print(f'{a & b = }')
+# print(f'{a | b = }')
+print(f'{a + b = }')
+# print(f'{a - b = }')
+print(f'{a = }, {b = }')
+c = b
+b = b + a
+print(f'{c = }, {b = }\n')
