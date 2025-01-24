@@ -36,11 +36,12 @@ class Player:
         self.bottle_cup.now_v -= quantity
 
     def vamp_attack(self, other, quantity):
-        try:
-            quantity = int(quantity) and quantity > 0
-        except:
-            print('неверно, попробуйте другое целое положительное число')
-            quantity = 0
+        while quantity <= 0:
+            try:
+                quantity = int(quantity) and quantity > 0
+            except:
+                print('неверно, попробуйте другое целое положительное число')
+                quantity = 0
         self.health += quantity * 0.5
         other.health -= quantity
 

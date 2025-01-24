@@ -257,6 +257,7 @@ print(f'{a | b = }')
 # print(f'{a + b = }')
 print(f'{a - b = }')
 print(f'{b - a = }')
+print(f'{a ^ b = }')
 print(f'{a = }, {b = }')
 a = b
 b.add('new')
