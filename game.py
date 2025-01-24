@@ -23,11 +23,22 @@ class Player:
         print(self.name, ': LEVEL UP!!!')
 
     def heal(self, quantity):
+        # try:
+        #     quantity = int(quantity) and quantity > 0
+        # except:
+        #     print('неверно, попробуйте другое целое положительное число')
+        #     quantity = 0
         self.health += quantity
         self.bottle_cup.now_v -= quantity
 
     def vamp_attack(self, other, quantity):
-        self.health += quantity * 0.5
+        # while quantity <= 0:
+        #     try:
+        #         quantity = int(quantity) and quantity > 0
+        #     except:
+        #         print('неверно, попробуйте другое целое положительное число')
+        #         quantity = 0
+	self.health += quantity * 0.5
         other.health -= quantity
 
 
@@ -48,4 +59,4 @@ print(player_1.__dict__, player_2.__dict__, bottle_1.__dict__, bottle_2.__dict__
 player_1.heal(20)
 print(player_1.__dict__, bottle_1.__dict__, player_2.__dict__, bottle_2.__dict__)
 
-print(ord('}'))
+player_1.lvl_up()
