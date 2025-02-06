@@ -203,6 +203,7 @@ s = a.popitem()  # get last pair key-value
 print(f'{s = }\t{a = }')
 a.update(dict(key10=10))
 a.update(dict([(10, 11), (11, 12)]))
+a['123'] = '321'
 print(a, 'update')
 nd = a | b | c | d
 print(nd)
